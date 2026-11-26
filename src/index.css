@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --color-obsidian: #050507;
+  --color-line: #27272a;
+  --color-gold: #d4af37;
+  --color-heart: #c084fc;
+  --color-citrus: #fde047;
+  --color-molecule: #38bdf8;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: #050507;
+  color: #e4e4e7;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass {
+  background: rgb(9 9 11 / 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #27272a;
+}
+
+/* Подписи узлов 3D-графа (CSS2DRenderer) */
+.node-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: #e4e4e7;
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgb(5 5 7 / 0.55);
+  border: 1px solid rgb(39 39 42 / 0.6);
+  pointer-events: none;
+  user-select: none;
+  transition: border-color 0.3s;
+}
+.node-label .syn {
+  margin-left: 5px;
+  color: #d4af37;
+  display: none;
+}
+.node-label.show-syn .syn {
+  display: inline;
+}
+.node-label.is-selected {
+  border-color: #d4af37;
+  color: #fff;
+}
+.node-label.is-suggested {
+  border-color: #38bdf8;
+  color: #bae6fd;
+}
+
+/* Слайдеры */
+input[type="range"].lux {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 999px;
+  background: #27272a;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].lux::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--thumb, #d4af37);
+  box-shadow: 0 0 10px var(--thumb, #d4af37);
+  border: none;
+}
+input[type="range"].lux::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--thumb, #d4af37);
+  border: none;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 5px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9px;
+}
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a transparent;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fadeUp 0.35s ease both;
+}
